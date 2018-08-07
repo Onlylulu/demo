@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mapper.ProvinceDaoMapper" >
+  <resultMap id="BaseResultMap" type="cn.bean.ProvinceDao" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, provinceId, province
+  </sql>
+  <select id="getProvince" resultMap="BaseResultMap" parameterType="Province" >
+    select 
+    <include refid="Base_Column_List" />
+    from province
+  </select>
+</mapper>

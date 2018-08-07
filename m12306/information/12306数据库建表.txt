@@ -1,0 +1,76 @@
+create table UserType(
+id int primary key auto_increment,
+content varchar(20) not null
+)
+
+
+create table certtype(
+id int primary key auto_increment,
+content varchar(20) not null
+)
+
+insert into certtype(content) values('成人')
+
+
+
+
+create table province(
+id int primary key auto_increment,
+provinceId int not null,
+province varchar(50) not null
+)
+
+
+
+
+
+create table city(
+id int primary key auto_increment,
+cityId int not null,
+city varchar(50) not null,
+province varchar(50),
+
+constraint fk_city_province  foreign key(province) references province(province)
+)
+
+
+create table user(
+id int primary key auto_increment,
+username varchar(20) not null,
+pwd varchar(50) not null,
+rule bit default 1 not null,
+realname varchar(20) not null,
+sex bit default 0 not null,
+city varchar(50) not null,
+certType varchar(20) not null,
+cert varchar(20) not null,
+birthday date,
+userType varchar(20) not null,
+content varchar(200),
+status bit default 0 not null,
+loginIp varchar(200),
+imagePath varchar(200),
+constraint fk_city_province  foreign key(province) references province(province)
+)
+
+
+INSERT INTO users(username,pwd,rule,realname,sex,city,certType,cert,birthday,userType,content,status,loginIp,imagePath)
+VALUES('李四',123,1,'李斯',1,'孝感市','台胞证',123456749,'1992-08-03','成人',NULL,0,010,NULL)
+
+
+
+
+
+"insert into users(username,pwd,rule,realname,sex,city, "
+				+ " certType,cert,birthday,userType,content,status,loginIp,imagePath "
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+
+
+
+  	<%  //String uid=request.getParameter("uid");
+  		//User user=(User)session.getAttribute("user");
+  	 %>
+  	<% //if(null!=user){ %>
+  		//welcome:<%=user.getId()%> &nbsp; <%=user.getRealname() %>
+  		
+  	<%//} %>

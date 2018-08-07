@@ -1,0 +1,36 @@
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="cn.my12306.bean.User"%>
+
+	<%
+
+	
+	 %>
+
+		 <br/>
+   	<% 
+  		User user=(User)session.getAttribute("user");
+  	 %>
+  	<% if(null!=user){ %>
+  		session welcome:<%=user.getId()%> &nbsp; &nbsp; <%=user.getRealname() %>
+  	<%}
+  		else{
+  	%>
+		<a href="user/login.jsp">未登录</a>
+	<%} %>
+	
+	<br/>
+	<%
+		Integer count=(Integer)application.getAttribute("count");
+		if(null!=count)
+		{
+			count+=1;
+		}
+		else
+			count=1;
+		
+		application.setAttribute("count", count);
+	 %>
+	
+	当前在线人数：<%=count %>
+	
+	
